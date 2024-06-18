@@ -1,14 +1,4 @@
 #################################
-## DynamoDB
-#################################
-
-variable "dynamodb_lock_table_name" {
-  description = "(Required) Unique within a region ; name of the table."
-  type        = string
-  default     = "terraform-lock"
-}
-
-#################################
 ## S3
 #################################
 

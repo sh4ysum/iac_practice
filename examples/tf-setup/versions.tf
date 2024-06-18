@@ -10,11 +10,11 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = var.s3_backend_bucket
-    dynamodb_table = var.dynamodb_lock_table_name
+    bucket         = "some-tf-backend-state"
+    dynamodb_table = "terraform-lock"
     encrypt        = true
     key            = "states/terraform.tfstate"
-    region         = var.aws_region
+    region         = "some-aws-region"
   }
 }
 
