@@ -6,13 +6,13 @@ More specifics to these steps found in `../../modules/aws-terraform-backend`
 
 ```bash
 
-#     backend "s3" {
-#       bucket         = "some-tf-backend-state"
-#       dynamodb_table = "terraform-lock"
-#       encrypt        = true
-#       key            = "states/terraform.tfstate"
-#       region         = "us-west-1"
-#     }
+  # backend "s3" {
+  #   bucket         = var.s3_backend_bucket
+  #   dynamodb_table = var.dynamodb_lock_table_name
+  #   encrypt        = true
+  #   key            = "states/terraform.tfstate"
+  #   region         = var.aws_region
+  # }
 ```
 
 - Init without the backend reference.
@@ -41,13 +41,13 @@ terraform apply backend.plan
 - Update backend to point to newly created s3 bucket. Again, this block can be where you would like. I have it in `versions.tf`
 
 ```bash
-    backend "s3" {
-      bucket         = "some-tf-backend-state"
-      dynamodb_table = "terraform-lock"
-      encrypt        = true
-      key            = "states/terraform.tfstate"
-      region         = "us-west-1"
-    }
+  backend "s3" {
+    bucket         = var.s3_backend_bucket
+    dynamodb_table = var.dynamodb_lock_table_name
+    encrypt        = true
+    key            = "states/terraform.tfstate"
+    region         = var.aws_region
+  }
 ```
 
 - Reconfigure to move state to the new backend. You will be asked to migrate the state into this backend. If done correctly, after responding `yes` your state should now be in the s2 bucket.

@@ -102,4 +102,15 @@ terraform apply backend.plan
 ## Reinitialize terraform to use your newly provisioned backend.
 terraform init -reconfigure
   > yes
+
+## STEP 7:
+## Validate your backend to current resource code.
+terraform plan
+
+#################################
+## EXPECTED:
+#################################
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed
 ```
